@@ -20,7 +20,7 @@ pipeline {
     stages {
 
 
-        stage('BUILD') {
+        stage('BUILD & UNIT TESTING') {
          parallel {
             stage('API') {
                 steps {
@@ -57,6 +57,42 @@ pipeline {
            }
         }
         stage('QUALITY_GATE') {
+         parallel {
+            stage('API') {
+                steps {
+                    sh  '''
+                        node --version
+                    '''
+                }
+             }
+           stage('WEBAPP') {
+                steps {
+                    sh  '''
+                        node --version
+                    '''
+                }
+             }
+           }
+        }
+        stage('BUILD_IMAGE') {
+         parallel {
+            stage('API') {
+                steps {
+                    sh  '''
+                        node --version
+                    '''
+                }
+             }
+           stage('WEBAPP') {
+                steps {
+                    sh  '''
+                        node --version
+                    '''
+                }
+             }
+           }
+        }
+        stage('PUSH_IMAGE') {
          parallel {
             stage('API') {
                 steps {
