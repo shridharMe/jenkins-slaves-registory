@@ -9,8 +9,8 @@ pipeline {
         timestamps()
     }
     environment {
-        AWS_ACCESS_KEY = credentials('MEM_AWS_ACCESS_KEY')
-        AWS_SECRET_KEY = credentials('MEM_AWS_SECRET_KEY')
+        AWS_ACCESS_KEY = credentials('AWS_ACCESS_KEY')
+        AWS_SECRET_KEY = credentials('AWS_SECRET_KEY')
     }
     parameters { 
        string(name: 'ECR_REPO', defaultValue: 'api', description: 'Please enter the ecr repo name')
