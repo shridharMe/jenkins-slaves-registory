@@ -110,5 +110,12 @@ pipeline {
              }
            }
         }
+        stage('DEPLOY_DEV') {
+             steps {
+                    sh  '''
+                        node --version
+                    '''
+                }
+         }
     }
 }
