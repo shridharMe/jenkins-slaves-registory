@@ -117,5 +117,80 @@ pipeline {
                     '''
                 }
          }
+         stage('OWASP_TESTING') {
+             steps {
+                    sh  '''
+                        node --version
+                    '''
+                }
+         }
+         stage("Ready to deploy on QA ?") {
+           steps {
+               script {
+						 input(message: 'Do you want to continue?', ok: 'Continue')
+               }		    
+					
+           }
+        }
+        stage("DEPLOY_QA") {
+           steps {
+               sh  '''
+                        node --version
+                '''		    
+					
+           }
+        }
+        stage("Functional Testing") {
+           steps {
+               sh  '''
+                        node --version
+                '''			    
+					
+           }
+        }
+        stage("Ready to deploy on Perf ?") {
+           steps {
+               script {
+						 input(message: 'Do you want to continue?', ok: 'Continue')
+               }		    
+					
+           }
+        }
+        stage("DEPLOY_PERF") {
+           steps {
+               sh  '''
+                        node --version
+                '''			    
+					
+           }
+        }
+        stage("Per Testing") {
+           steps {
+               sh  '''
+                        node --version
+                '''			    
+					
+           }
+        }
+        stage("Ready to deploy on LIVE ?") {
+           steps {
+               script {
+						 input(message: 'Do you want to continue?', ok: 'Continue')
+               }		    
+					
+           }
+        }
+        stage("DEPLOY_LIVE") {
+           steps {
+               sh  '''
+                        node --version
+                '''			    
+					
+           }
+        }
+
+
+        
+         
     }
 }
