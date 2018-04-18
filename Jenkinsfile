@@ -18,16 +18,54 @@ pipeline {
        
     }
     stages {
+
+
         stage('BUILD') {
          parallel {
-            stage('API_BUILD') {
+            stage('API') {
                 steps {
                     sh  '''
                         node --version
                     '''
                 }
              }
-           stage('WEBAPP_BUILD') {
+           stage('WEBAPP') {
+                steps {
+                    sh  '''
+                        node --version
+                    '''
+                }
+             }
+           }
+        }
+        stage('CODE_ANALYSIS') {
+         parallel {
+            stage('API') {
+                steps {
+                    sh  '''
+                        node --version
+                    '''
+                }
+             }
+           stage('WEBAPP') {
+                steps {
+                    sh  '''
+                        node --version
+                    '''
+                }
+             }
+           }
+        }
+        stage('QUALITY_GATE') {
+         parallel {
+            stage('API') {
+                steps {
+                    sh  '''
+                        node --version
+                    '''
+                }
+             }
+           stage('WEBAPP') {
                 steps {
                     sh  '''
                         node --version
