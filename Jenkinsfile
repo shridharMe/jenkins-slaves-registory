@@ -124,6 +124,13 @@ pipeline {
                     '''
                 }
          }
+         stage('INTEGRATION_TESTING') {
+             steps {
+                    sh  '''
+                        node --version
+                    '''
+                }
+         }
          stage("Ready to deploy on QA ?") {
            steps {
                script {
@@ -140,7 +147,7 @@ pipeline {
 					
            }
         }
-        stage("Functional Testing") {
+        stage("FUNCTIONAL_TESTING") {
            steps {
                sh  '''
                         node --version
@@ -164,7 +171,7 @@ pipeline {
 					
            }
         }
-        stage("Per Testing") {
+        stage("PERF_TESTING") {
            steps {
                sh  '''
                         node --version
