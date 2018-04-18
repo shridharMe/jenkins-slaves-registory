@@ -19,20 +19,20 @@ pipeline {
     }
     stages {
         stage('BUILD') {
-              parallel {
+         parallel {
             stage('API_BUILD') {
-            steps {
-                 sh  '''
-                    node --version
-                '''
-            }
+                steps {
+                    sh  '''
+                        node --version
+                    '''
+                }
              }
            stage('WEBAPP_BUILD') {
-            steps {
-                 sh  '''
-                    node --version
-                '''
-            }
+                steps {
+                    sh  '''
+                        node --version
+                    '''
+                }
              }
            }
         }

@@ -1,5 +1,7 @@
 
-From jenkins/jnlp-slave
-RUN curl --silent --location https://rpm.nodesource.com/setup_9.x | sudo bash -
-RUN yum -y install nodejs
-RUN yum install gcc-c++ make
+FROM jenkins/jnlp-slave
+USER root
+RUN  curl -sL https://deb.nodesource.com/setup_9.x | bash -
+RUN apt-get install nodejs
+RUN apt-get install git-core
+RUN dpkg -L git
