@@ -2,7 +2,7 @@
 
 pipeline {
     agent {   
-            node { label 'docker' } 
+            node { label 'docker_lamp' } 
       }
      options {
         buildDiscarder(logRotator(numToKeepStr: '5', daysToKeepStr: '14'))
@@ -13,8 +13,9 @@ pipeline {
         AWS_SECRET_KEY = credentials('AWS_SECRET_KEY')
     }
     parameters { 
-       string(name: 'ENV_NAME', defaultValue: 'dev', description: 'Please enter the env name to provision')
-         
+       string(name: 'ECR_REPO', defaultValue: 'api', description: 'Please enter the ecr repo name')
+       string(name: 'ECR_REPO', defaultValue: 'webapp', description: 'Please enter the ecr repo name')
+           
     }
     stages {
 
