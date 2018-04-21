@@ -27,5 +27,5 @@ RUN wget https://releases.hashicorp.com/terraform/"${TERRAFORM_VERSION}"/terrafo
  mv terraform /usr/local/bin/
 
 USER jenkins
-RUN  terraform --version && aws --version && echo "node:" && node --version
+RUN  terraform --version && aws --version && echo "node:" && node --version && java -version
 

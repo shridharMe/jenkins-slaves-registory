@@ -21,7 +21,7 @@ RUN curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-c
 RUN wget https://releases.hashicorp.com/terraform/"${TERRAFORM_VERSION}"/terraform_"${TERRAFORM_VERSION}"_linux_amd64.zip && \
   unzip terraform_"${TERRAFORM_VERSION}"_linux_amd64.zip && \
   mv terraform /usr/local/bin/ 
-RUN  terraform --version && aws --version && php -v
+RUN  terraform --version && aws --version && php -v &&  java -version
 
 EXPOSE 80 3306
 CMD ["/etc/init.d/apache2" ,"restart"]
