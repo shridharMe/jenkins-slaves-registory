@@ -1,5 +1,4 @@
-
-FROM jenkins/jnlp-slave
+FROM openjdk
 
 ARG TERRAFORM_VERSION=0.11.7
 ARG NODEJS_VERSION=9
@@ -44,4 +43,3 @@ RUN  terraform --version && aws --version && echo "node:" && node --version && j
 RUN curl -s -o /bin/swarm-client.jar -k http://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/${SWARM_CLIENT}/swarm-client-${SWARM_CLIENT}.jar
 # Start Swarm-Client
 CMD java -jar /bin/swarm-client.jar -executors ${SLAVE_EXECUTORS}  -description "${SLAVE_DESCRIPTION}" -master ${SWARM_MASTER}  -username ${SWARM_USER} -password ${SWARM_PASSWORD} -name "${SLAVE_NAME}" -labels "${SLAVE_LABELS}" -mode ${SLAVE_MODE}
-USER jenkins

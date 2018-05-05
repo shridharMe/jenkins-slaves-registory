@@ -1,0 +1,30 @@
+version: '2'
+services:
+  jenkins-slave-lamp:
+    container_name: jenkins-slave-lamp
+    restart: always
+    image: shridhar/jenkins-slave-lamp:latest
+    network_mode: ${CUSTOM_NETWORK_NAME}
+    privileged: true
+    environment:    
+      SWARM_PASSWORD: ${JENKINS_PASSWORD}
+      SWARM_USER: ${JENKINS_USERNAME}
+      SLAVE_EXECUTORS: ${NUM_OF_SLAVE_EXECUTORS} 
+      SWARM_MASTER: ${JENKINS_MASTER_URL}       
+    #volumes:
+    #    - /var/run/:/host/var/run/
+    #    - $WORKSPACE:/var/www/html
+    #command: /etc/init.d/apache2 status
+  jenkins-slave-nodejs:
+    container_name: jenkins-slave-nodejs
+    restart: always
+    image: shridhar/jenkins-slave-nodejs:latest
+    network_mode: ${CUSTOM_NETWORK_NAME}
+    privileged: true
+    environment:    
+      SWARM_PASSWORD: ${JENKINS_PASSWORD}
+      SWARM_USER: ${JENKINS_USERNAME}
+      SLAVE_EXECUTORS: ${NUM_OF_SLAVE_EXECUTORS} 
+      SWARM_MASTER: ${JENKINS_MASTER_URL}       
+    #volumes:
+    #    - /var/run/:/host/var/run/
