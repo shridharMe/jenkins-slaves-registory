@@ -1,7 +1,7 @@
 
 
 pipeline {
-    agent  any   
+    agent { label 'docker'  }
      options {
         buildDiscarder(logRotator(numToKeepStr: '5', daysToKeepStr: '14'))
         timestamps()
@@ -20,24 +20,24 @@ pipeline {
      
          parallel {
             stage('API') {
-                agent {
-                        docker { image 'node:7-alpine' }
-                    }
+             
                 steps {
                     
+                    withDockerContainer('node:7-alpine'){
                     sh  '''
                         node --version
                     '''
+                    }
                 }
              }
            stage('WEBAPP') {
-                agent {
-                        docker { image 'linode/lamp' }
-                }
+              
                 steps {
+                     withDockerContainer('linode/lamp'){
                     sh  '''
                         php -v 
                     '''
+                     }
                 }
              }
            }
