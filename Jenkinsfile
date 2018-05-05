@@ -23,10 +23,11 @@ pipeline {
      
          parallel {
             stage('API') {
-                steps {
-                    agent {
+                agent {
                         docker { image 'node:7-alpine' }
                     }
+                steps {
+                    
                     sh  '''
                         node --version
                     '''
