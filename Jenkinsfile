@@ -205,3 +205,8 @@ pipeline {
          
     }
 }
+
+def loadsquad(){
+     file = new File("${Jenkins.instance.getJob('jenkins-slaves-registory').workspace}/squads").text
+    return file
+}
